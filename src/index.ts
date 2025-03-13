@@ -5,6 +5,11 @@ import { Reminder, ReminderDatabase } from "./reminders";
 const app = new Hono();
 const db = new ReminderDatabase();
 
+
+app.get("/", (c) => {
+  return c.json({ message: "Welcome to the reminder service" });
+});
+
 app.post("/reminders", async (c) => {
   try {
     const body: Reminder = await c.req.json();
